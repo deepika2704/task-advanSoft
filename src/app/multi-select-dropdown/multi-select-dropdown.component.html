@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="input-group">
+    <div class="">Action Attributes :</div>
+    <span class="input-group mt-2">
+      <input type="text" class="form-control" (keyup)="search($event)" (click)="showDropdown = true;"
+        placeholder="{{placeholderText}}">
+      
+    </span>
+  </div>
+  <ul class="list-group dropdown" *ngIf="showDropdown">
+    <li class="list-group-item" (click)="selectAllToggle()">
+      <input type="checkbox" [checked]="allSelected"> Select all
+    </li>
+    <li *ngFor=" let option of dropDownData" class="list-group-item" (click)="selectOption(option.index)">
+      <input type="checkbox" [checked]=isChecked(option.index) id="option.index"> {{option.value}}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+.wrapper {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+}

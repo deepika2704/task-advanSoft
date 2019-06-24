@@ -1,0 +1,44 @@
+.table > td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wrapper{
+    border: 1px solid #ccc;
+    padding: 25px;
+    width: 100%;
+}
+.sort-icons {
+    right: 5px;
+    display: inline-block;
+    width: 10px;
+    padding: 7px 0px;
+}
+.sort-icons i {
+    opacity: 0.2;
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+.sort-icons .asc {
+    top: 12px;  
+}
+.sort-icons .desc {
+    top: 17px;
+}
+.sort-icons i.active {
+    opacity: 1;
+}
+input[type="text"]{
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+
+td > input {
+    width: 100px
+}
+
+.pointer{
+    cursor: pointer;
+}

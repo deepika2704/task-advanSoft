@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <select name="range" (change)="Range($event.target.value)" class="p-2 m-2 rounded float-left">
+    <option value="10">10</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+  </select>
+  <button class="fa fa-plus btn btn-primary" (click)="AddRow()"></button>
+
+  <!-- <div class="float-right">
+    <input type="text" name="" id="search" placeholder="Search" autocomplete="off" class="p-2"
+      (keyup)="search($event.target.value)">
+  </div> -->
+  <table class="table-responsive-sm table-striped table-bordered table">
+    <thead>
+      <th>#</th>
+      <th *ngFor="let col of Columns" (click)="sort(col.ColName)" class="pointer">
+        <span>{{col.DispName}}</span>
+        <span class="sort-icons">
+          <i class="fa fa-sort-asc asc" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc desc" aria-hidden="true"></i>
+        </span>
+      </th>
+      <th *ngIf="canEdit">
+        Edit
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of IterationRange;let i = index">
+        <td>
+          {{i + 1}}
+        </td>
+        <td *ngFor="let col of Columns">
+          <span
+            *ngIf="!isEditable(i) && (col.ColType === colType.String || col.ColType === colType.Number)">{{data[i][col.ColName]}}</span>
+          <input type="text" *ngIf="isEditable(i)" [(ngModel)]="shallowCopy[i][col.ColName]">
+          <span *ngIf="col.ColType === colType.Boolean && data[i][col.ColName]">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </span>
+          <span *ngIf="col.ColType === colType.Boolean && !data[i][col.ColName]">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </span>
+        </td>
+        <td class="text-center" *ngIf="canEdit">
+          <span><i class="fa fa-pencil text-primary pointer" aria-hidden="true" (click)="edit(i)" *ngIf="canEdit" ></i></span>
+          &nbsp;
+          <span><i class="fa fa-check text-success pointer" aria-hidden="true" (click)="save(i)" *ngIf="isEditable(i)"></i></span>
+          &nbsp;
+          <span><i class="fa fa-times text-danger pointer" aria-hidden="true" (click)="cancel(i)" *ngIf="isEditable(i)"></i></span>
+          <span><i class="fa fa-trash text-danger pointer" (click)="deleteRow(i)"></i></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
